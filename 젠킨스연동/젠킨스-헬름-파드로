@@ -1,0 +1,12 @@
+# 1) Helm repo 추가 (없으면)
+helm repo add jenkins https://charts.jenkins.io
+helm repo update
+
+# 2) Jenkins 설치
+helm install my-jenkins jenkins/jenkins --namespace jenkins --create-namespace
+
+# 3) 설치 상태 확인
+kubectl get pods -n jenkins
+
+# 4) 설치 후 초기 admin 비밀번호 확인
+kubectl exec -n jenkins deploy/my-jenkins -c jenkins -- cat /run/secrets/chart-admin-password && echo

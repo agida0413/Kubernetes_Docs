@@ -21,3 +21,7 @@ charts  Chart.yaml  templates  values.yaml
 
 
 https://cafe.naver.com/kubeops/98
+
+
+---------------
+curl -fsSL https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
