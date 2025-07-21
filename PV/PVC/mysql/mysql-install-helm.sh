@@ -1,5 +1,5 @@
 helm upgrade --install mysql-userdb bitnami/mysql \
-  --namespace backend-app-db \
+  --namespace backend-app-db-2 \
   --set architecture=replication \
   --set auth.rootPassword=kim1234 \
   --set auth.username=admin \
@@ -8,15 +8,15 @@ helm upgrade --install mysql-userdb bitnami/mysql \
   --set replication.password=replica1234 \
   --set primary.persistence.enabled=true \
   --set primary.persistence.storageClass=local-path \
-  --set primary.persistence.size=1Gi \
+  --set primary.persistence.size=512Mi \
   --set secondary.persistence.enabled=true \
   --set secondary.persistence.storageClass=local-path \
-  --set secondary.persistence.size=1Gi \
+  --set secondary.persistence.size=512Mi \
   --set service.type=NodePort \
   --set service.nodePort=30306
 
 helm upgrade --install mysql-orderdb bitnami/mysql \
-  --namespace backend-app-db \
+  --namespace backend-app-db-2 \
   --set architecture=replication \
   --set auth.rootPassword=kim1234 \
   --set auth.username=admin \
@@ -25,10 +25,10 @@ helm upgrade --install mysql-orderdb bitnami/mysql \
   --set replication.password=replica1234 \
   --set primary.persistence.enabled=true \
   --set primary.persistence.storageClass=local-path \
-  --set primary.persistence.size=1Gi \
+  --set primary.persistence.size=512Mi \
   --set secondary.persistence.enabled=true \
   --set secondary.persistence.storageClass=local-path \
-  --set secondary.persistence.size=1Gi \
+  --set secondary.persistence.size=512Mi \
   --set service.type=NodePort \
   --set service.nodePort=30306
 
@@ -44,3 +44,9 @@ helm upgrade --install mysql-orderdb bitnami/mysql \
     --set primary.persistence.storageClass=local-path \
     --set primary.persistence.size=1Gi
 
+
+
+helm uninstall mysql-userdb -n backend-app-db
+
+
+helm uninstall mysql-orderdb -n backend-app-db
