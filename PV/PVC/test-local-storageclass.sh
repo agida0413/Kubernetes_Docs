@@ -7,7 +7,8 @@ kubectl patch storageclass local-path  -p '{"metadata": {"annotations":{"storage
 # 확인
 kubectl get sc
 kubectl get all -n local-path-storage
-
+sudo mkdir -p /opt/local-path-provisioner
+sudo chmod 777 /opt/local-path-provisioner
 
 --->
 NAME                   PROVISIONER             AGE
