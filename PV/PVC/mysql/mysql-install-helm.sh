@@ -102,3 +102,14 @@ helm uninstall mysql-orderdb -n backend-app-db
       --set service.nodePort=30306 \
       --set primary.resources.requests.cpu=10m \
       --set primary.resources.requests.memory=10Mi
+
+
+
+
+
+      ✔️ MySQL을 특정 노드에 배치하고 싶다면: affinity / nodeSelector
+      ✔️ Longhorn 볼륨도 해당 노드의 디스크에 위치시키고 싶다면:
+
+      Longhorn에서 해당 노드만 디스크로 등록
+
+      Data Locality: "BestEffort" or "StrictLocal"
